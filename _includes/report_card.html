@@ -49,24 +49,25 @@
     {{ site.static_files.reports_ico }}
     {% assign icons = site.static_files | where: "reports_ico", true %}
     {% for ico in icons %}
+    {% assign ico_apath = ico.path | absolute_url %}
     {% if post.rp_rb_path and ico.basename == "rb" %}
     <div class="card-footer-item">
       {% include report_modal.html
-      ico=ico.path | absolute_url
+      ico=ico_apath
       link=post.rp_rb_path %}
     </div>
     {% endif %}
     {% if post.rp_cucumber_path and ico.basename == "cucumber" %}
     <div class="card-footer-item">
       {% include report_modal.html
-      ico=ico.path | absolute_url
+      ico=ico_apath
       link=post.rp_cucumber_path %}
     </div>
     {% endif %}
     {% if post.rp_allure_path and ico.basename == "allure" %}
     <div class="card-footer-item">
       {% include report_modal.html
-      ico=ico.path | absolute_url
+      ico=ico_apath
       link=post.rp_allure_path %}
     </div>
     {% endif %}
