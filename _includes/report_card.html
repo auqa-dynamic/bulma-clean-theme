@@ -3,14 +3,14 @@
   <header class="card-header">
     <a class="card-header-title" href="{{ site.baseurl }}{{ post.url }}">
       {{ post.date | date: "%H:%M:%S"  }}
-      Job #{{ post.job_number }} 
-      is {{ post.job_status }} 
+      Job #{{ post.job_number }}
+      is {{ post.job_status }}
     </a>
   </header>
 
   <div class="card-content">
     <div class="content columns is-small has-text-centered">
-      <div class="column is-4"> 
+      <div class="column is-4">
         <p class="content is-medium">
           {{ post.tests_total }} tests for {{ post.tests_duration }}
         </p>
@@ -19,18 +19,18 @@
         <div class="columns is-mobile is-centered">
           <div class="column is-3-mobile">
             <span class="tag is-danger is-light">{{ post.tests_failures }} </span>
-            <br/>failures 
+            <br/>failures
           </div>
           <div class="column is-3-mobile">
             <span class="tag is-warning is-light">{{ post.tests_errors }} </span>
-            <br/>errors 
+            <br/>errors
           </div>
         </div>
       </div>
-      <div class="column"> 
+      <div class="column">
         {% assign bad_tests    = post.tests_failures | plus: post.tests_errors | times: 1.0 %}
         {% assign bad_rate = bad_tests | divided_by: post.tests_total | times: 100 | floor %}
-        {% assign success_rate = 100 | minus: bad_rate %} 
+        {% assign success_rate = 100 | minus: bad_rate %}
 
         {% assign paint_rate = 'is-success' %}
         {% if (site.tests_rates_limit.fatal < success_rate) and (site.tests_rates_limit.warn > success_rate) %}
@@ -51,22 +51,22 @@
     {% for ico in icons %}
     {% if post.rp_rb_path and ico.basename == "rb" %}
     <div class="card-footer-item">
-      {% include report_modal.html 
-      ico=ico.path 
+      {% include report_modal.html
+      ico=ico.path | absolute_url
       link=post.rp_rb_path %}
     </div>
     {% endif %}
     {% if post.rp_cucumber_path and ico.basename == "cucumber" %}
     <div class="card-footer-item">
-      {% include report_modal.html 
-      ico=ico.path 
+      {% include report_modal.html
+      ico=ico.path | absolute_url
       link=post.rp_cucumber_path %}
     </div>
     {% endif %}
     {% if post.rp_allure_path and ico.basename == "allure" %}
     <div class="card-footer-item">
-      {% include report_modal.html 
-      ico=ico.path 
+      {% include report_modal.html
+      ico=ico.path | absolute_url
       link=post.rp_allure_path %}
     </div>
     {% endif %}
