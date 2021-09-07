@@ -1,0 +1,10 @@
+defaults:
+  -
+    scope:
+      path: "assets/reports"
+    values:
+      reports_ico: true
+
+tests_rates_limit:
+  fatal: 20
+  warn: 80
