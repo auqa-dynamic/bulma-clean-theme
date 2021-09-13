@@ -1,30 +1,40 @@
 <div class="card">
+{% comment %}
+{% using post variables: %}
+    {% job_number, job_author, job_url, tests_total, tests_duration, tests_failures, tests_skipped %}
+{% endcomment %}
 
   <header class="card-header">
-    <a class="card-header-title" href="{{ site.baseurl }}{{ post.url }}">
-      {{ post.date | date: "%H:%M:%S"  }}
+    <a class="card-header-title" href="{{ post.job_url }}">
+      {{ post.date | date: "%b %d, %H:%M:%S"  }}
       Job #{{ post.job_number }}
-      is {{ post.job_status }}
+        {% if post.job_author %}
+            by {{ post.job_author }}
+        {% endif %}
     </a>
   </header>
 
   <div class="card-content">
-    <div class="content columns is-small has-text-centered">
-      <div class="column is-4">
-        <p class="content is-medium">
-          {{ post.tests_total }} tests for {{ post.tests_duration }}
-        </p>
-      </div>
-      <div class="column">
+    <div class="content columns has-text-centered">
+        <div class="column is-4">
+            <p class="content is-medium">
+                {{ post.tests_total }} tests for {{ post.tests_duration }}
+            </p>
+        </div>
+        <div class="column">
         <div class="columns is-mobile is-centered">
-          <div class="column is-3-mobile">
+          <div class="column is-2-mobile">
             <span class="tag is-danger is-light">{{ post.tests_failures }} </span>
             <br/>failures
           </div>
-          <div class="column is-3-mobile">
+          <div class="column is-2-mobile">
             <span class="tag is-warning is-light">{{ post.tests_errors }} </span>
             <br/>errors
           </div>
+            <div class="column is-2-mobile">
+                <span class="tag is-info is-light">{{ post.tests_skipped }} </span>
+                <br/>skipped
+            </div>
         </div>
       </div>
       <div class="column">
@@ -72,6 +82,18 @@
     </div>
     {% endif %}
     {% endfor %}
+      {% if post.job_attachments %}
+      <div class="card-footer-item">
+          <a href="{{ post.job_attachments }}" title="attachments" class="button is-white">
+                  <span class="icon-text">
+                      <span class="icon is-medium">
+                        <i class="fab fa-gitlab fa-lg"></i>
+                      </span>
+                      <span>attachments</span>
+                  </span>
+          </a>
+      </div>
+      {% endif %}
   </footer>
 
 </div>
