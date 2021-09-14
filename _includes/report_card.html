@@ -62,25 +62,49 @@
     {% assign ico_apath = ico.path | absolute_url %}
     {% if post.rp_rb_path and ico.basename == "rb" %}
     <div class="card-footer-item">
-      {% include report_modal.html
+      {% assign link = post.rp_rb_path  | absolute_url %}
+      {% include on_button_modal.html
       ico=ico_apath
-      link=post.rp_rb_path %}
+      style="is-white"
+      link=link %}
     </div>
     {% endif %}
     {% if post.rp_cucumber_path and ico.basename == "cucumber" %}
     <div class="card-footer-item">
-      {% include report_modal.html
+      {% assign link = post.rp_cucumber_path  | absolute_url %}
+      {% include on_button_modal.html
       ico=ico_apath
-      link=post.rp_cucumber_path %}
+      style="is-white"
+      link=link %}
     </div>
     {% endif %}
     {% if post.rp_allure_path and ico.basename == "allure" %}
     <div class="card-footer-item">
-      {% include report_modal.html
+      {% assign link = post.rp_allure_path | absolute_url %}
+      {% include on_button_modal.html
       ico=ico_apath
-      link=post.rp_allure_path %}
+      style="is-white"
+      link=link %}
     </div>
     {% endif %}
+      {% if post.rp_jacoco_path and ico.basename == "jacoco" %}
+      <div class="card-footer-item">
+          {% assign link = post.rp_cucumber_path  | absolute_url %}
+          {% include on_button_modal.html
+          ico=ico_apath
+          style="is-white"
+          link=link %}
+      </div>
+      {% endif %}
+      {% if post.rp_yard_path and ico.basename == "yard" %}
+      <div class="card-footer-item">
+          {% assign link = post.rp_yard_path  | absolute_url %}
+          {% include on_button_modal.html
+          ico=ico_apath
+          style="is-white"
+          link=link %}
+      </div>
+      {% endif %}
     {% endfor %}
       {% if post.job_attachments %}
       <div class="card-footer-item">

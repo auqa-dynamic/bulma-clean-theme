@@ -1,0 +1,19 @@
+{% comment %}
+    {% variables: %}
+    {% ico, text, style, link %}
+{% endcomment %}
+<div x-data="{ open: false }">
+  <a @click="open = true" title="open modal" class="button {{ include.style }}">
+      {% if include.ico %}
+          <img src="{{ include.ico }}" alt="open">
+      {% endif %}
+      {{ include.text }}
+  </a>
+  <div class="modal" :class="{ 'is-active': open }">
+    <div class="modal-background" @click="open = false"></div>
+    <div class="modal-content"  style="min-width: 92vw; min-height: 92vh">
+      <iframe src="{{ include.link }}" class="box modal-card" style="min-width: 92vw; min-height: 92vh"></iframe>
+    </div>
+    <button class="modal-close is-large" aria-label="close" @click="{ open = false }"></button>
+  </div>
+</div>
