@@ -6,7 +6,7 @@
 
   <header class="card-header">
     <a class="card-header-title" href="{{ post.job_url }}">
-      {{ post.date | date: "%b %d, %H:%M:%S"  }}
+      {{ post.date | date: "%b %d, %H:%M"  }}
       Job #{{ post.job_number }}
         {% if post.job_author %}
             by {{ post.job_author }}
