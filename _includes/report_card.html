@@ -24,15 +24,15 @@
         <div class="column">
         <div class="columns is-mobile is-centered">
           <div class="column is-2-mobile">
-            <span class="tag is-danger">{{ post.tests_failures }} </span>
+            <span class="tag is-danger is-light">{{ post.tests_failures }} </span>
             <br/>failures
           </div>
           <div class="column is-2-mobile">
-            <span class="tag is-warning">{{ post.tests_errors }} </span>
+            <span class="tag is-warning is-light">{{ post.tests_errors }} </span>
             <br/>errors
           </div>
             <div class="column is-2-mobile">
-                <span class="tag is-info">{{ post.tests_skipped }} </span>
+                <span class="tag is-info is-light">{{ post.tests_skipped }} </span>
                 <br/>skipped
             </div>
         </div>
@@ -48,7 +48,7 @@
         {% elsif site.tests_rates_limit.fatal >= success_rate  %}
         {% assign paint_rate = "is-danger"  %}
         {% endif %}
-        <span class="tag {{ paint_rate }} is-white is-large">
+        <span class="tag {{ paint_rate }} is-light is-large">
           {{ success_rate }}%</span> <br/> success rate
       </div>
     </div>
